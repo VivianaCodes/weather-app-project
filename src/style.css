@@ -7,7 +7,7 @@ body {
   width: 80%;
   margin: 60px auto;
   padding: 30px;
-  height: 1000px;
+  height: 800px;
   border: 1px solid rgba(116, 211, 205, 0.5);
   border-radius: 10px;
 }
@@ -32,6 +32,9 @@ img {
   max-width: 100%;
   border-radius: 20%;
   box-shadow: 10px 5px 5px rgba(116, 211, 205, 0.5);
+}
+.future-days {
+  margin-top: -130px;
 }
 .card {
   background-color: #ace4e0;
