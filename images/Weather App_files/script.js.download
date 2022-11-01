@@ -1,0 +1,64 @@
+let realDate = document.querySelector(".current-time");
+let now = new Date();
+
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+let day = days[now.getDay()];
+let month = months[now.getMonth()];
+let date = now.getDate();
+let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
+let minute = now.getMinutes();
+if (minute < 10) {
+  minute = `0${minute}`;
+}
+realDate.innerHTML = `${day}, ${month} ${date} ${hour}:${minute}`;
+
+let searchBar = document.querySelector("#form");
+searchBar.addEventListener("submit", searchCity);
+
+function searchCity(city) {
+  let apiKey = "d59265a17617259a858c34b2c6833049";
+  let apiUrl = `https://openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
+}
+
+function displayWeather(response) {
+  document.querySelector("h3");
+  let temp = (document.querySelector("#temp-number").innerHTML =
+    Math.round(response.main.data.temp) + "°C");
+  let sky = (document.querySelector("#sky").innerHTML =
+    response.data.waìeather[0].main);
+}
+
+// function convertCelsius(event) {
+//   event.preventDefault();
+//   let tempElement = document.querySelector("#temp-number");
+//   tempElement.innerHTML = 18;
+// }
+// let celsiusLink = document.querySelector("#celsius-link");
+// celsiusLink.addEventListener("click", convertCelsius);
+
+// function convertFahrenheit(event) {
+//   event.preventDefault();
+//   let tempElement = document.querySelector("#temp-number");
+//   tempElement.innerHTML = 64;
+// }
+
+// let fahrenheitLink = document.querySelector("#fahrenheit-link");
+// fahrenheitLink.addEventListener("click", convertFahrenheit);

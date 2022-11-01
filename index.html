@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Molle&family=Rajdhani&display=swap" rel="stylesheet">
+ <script
+      src="https://kit.fontawesome.com/f4f3af44e3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+        <img src="images/Naples.jpg" alt="Naples" />
+      <div class="card-now">
+  <div class="card-body-now">
+    <h3 class="card-title" id="current-city"> Naples </h3>
+          <h4>
+            <span id="temp-number">18</span>
+          <span class="units">
+            <a href="#" id="celsius-link" style="text-decoration:none; color:inherit">°C </a>|
+            <a href="#" id="fahrenheit-link" style="text-decoration:none; color:inherit">°F</a>
+          </span>
+        </h4>
+    <p class="card-text">
+      <div class="current-time">Time</div>
+    <span id="sky">Sunny</span>
+  </br>
+  <span id="weather-icon">☀️</span>
+</br>
+<span id="humidity">💧80%</span>
+</br>
+<span id="wind">🌬️ 13 Km/h</span>
+<form><button class="btn btn-primary-location" id="search-location">Current </button>   
+  </form>  
+</p>
+</div>
+</div>
+<div class="row">
+  <div class="col-2">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">MON 03.10
+        </h4>
+        <h6>
+        29°C | 15°C
+        </br>
+        Part. cloudy
+        </br>
+        🌤️
+        </h6>
+        <p class="card-text">💧80%
+</br>
+🌬️ 13 Km/h</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">TUE 04.10
+        </h4>
+        <h6>
+        21°C | 15°C
+        </br>
+        Cloudy
+        </br>
+      🌥️  
+        </h6>
+        <p class="card-text">💧80%
+</br>
+🌬️ 20 Km/h</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">WED 05.10
+        </h4>
+        <h6>
+        19°C | 16°C
+        </br>
+      Rainy
+            </br>
+      🌧️
+        </h6>
+        <p class="card-text">💧88%
+</br>
+  🌬️ 18 Km/h</p>
+</div>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">THU 06.10
+        </h4>
+        <h6>
+        21°C | 16°C
+        </br>
+       Rainy
+        </br>
+       🌧️
+        </h6>
+        <p class="card-text">💧98%
+</br>
+    🌬️ 18 Km/h</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">FRI 07.10
+        </h4>
+        <h6>
+        21°C | 16°C
+        </br>
+        Sunny
+        </br>
+        ☀️
+        </h6>
+        <p class="card-text">💧60%
+</br>
+🌬️ 23 Km/h
+</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">SAT 08.10
+        </h4>
+        <h6>
+        21°C | 16°C
+        </br>
+        Sunny
+        </br>
+        ☀️
+        </h6>
+        <p class="card-text">💧66%
+</br>
+      🌬️ 15 Km/h
+</p>
+      </div>
+    </div>
+  </div>
+    </div>
+    <form class="row height d-flex justify-content-center align-items-center" id="form">
+   <div class="col-md-8">
+    <div class="search">
+      <i class="fa fa-search"></i>
+        <input type="text" class="form-control" placeholder="Search for a city" autocomplete= off focus=on id="search-text"/>
+          <button class="btn btn-primary">Search</button>
+        </div> 
+      </div> 
+    </form>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
+
