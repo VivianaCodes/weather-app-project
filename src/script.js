@@ -47,8 +47,10 @@ function displayWeather(response) {
   humidity.innerHTML = `💧${response.data.main.humidity}%`;
   let wind = document.querySelector("#wind");
   wind.innerHTML = `🌬️${Math.round(response.data.wind.speed)} km/h`;
-  let iconElement = document.querySelector("#weather-icon");
 
+  celsiusTemperature = response.data.main.temp;
+
+  let iconElement = document.querySelector("#weather-icon");
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -76,9 +78,33 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchCurrentLocation);
 }
+function convertFahrenheit(event) {
+  event.preventDefault;
+  let tempElement = document.querySelector("#temp-number");
+  fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+function convertCelsius(event) {
+  event.preventDefault;
+  let tempElement = document.querySelector("#temp-number");
+  tempElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+// function convertFahrenheit(event) {
+//   event.preventDefault();
+//   let tempElement = document.querySelector("#temp-number");
+//   tempElement.innerHTML = 64;
+// }
+
+let celsiusTemperature = null;
 
 let currentLocationButton = document.querySelector("#search-location");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertFahrenheit);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertCelsius);
 
 searchCity("Naples");
 
