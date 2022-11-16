@@ -48,6 +48,8 @@ function displayWeather(response) {
   let wind = document.querySelector("#wind");
   wind.innerHTML = `🌬️${Math.round(response.data.wind.speed)} km/h`;
 
+  displayForecast();
+
   celsiusTemperature = response.data.main.temp;
 
   let iconElement = document.querySelector("#weather-icon");
@@ -90,11 +92,27 @@ function convertCelsius(event) {
   tempElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-// function convertFahrenheit(event) {
-//   event.preventDefault();
-//   let tempElement = document.querySelector("#temp-number");
-//   tempElement.innerHTML = 64;
-// }
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = ` <div class="row future-days">`;
+  forecastHTML =
+    forecastHTML +
+    ` 
+    <div class="col-2">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">MON</h4>
+          <h6><span class="temp-max">29°</> | <span class="temp-min">15° </span></h6>
+          <p class="card-text">Part. cloudy <img src= "http://openweathermap.org/img/wn/50d@2x.png"alt"" width"30"/> </p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
 
 let celsiusTemperature = null;
 
@@ -107,20 +125,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertCelsius);
 
 searchCity("Naples");
-
-// function convertCelsius(event) {
-//   event.preventDefault();
-//   let tempElement = document.querySelector("#temp-number");
-//   tempElement.innerHTML = 18;
-// }
-// let celsiusLink = document.querySelector("#celsius-link");
-// celsiusLink.addEventListener("click", convertCelsius);
-
-// function convertFahrenheit(event) {
-//   event.preventDefault();
-//   let tempElement = document.querySelector("#temp-number");
-//   tempElement.innerHTML = 64;
-// }
-
-// let fahrenheitLink = document.querySelector("#fahrenheit-link");
-// fahrenheitLink.addEventListener("click", convertFahrenheit);
