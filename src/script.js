@@ -95,19 +95,22 @@ function convertCelsius(event) {
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = ` <div class="row future-days">`;
-  forecastHTML =
-    forecastHTML +
-    ` 
+  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
     <div class="col-2">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">MON</h4>
+          <h4 class="card-title">${day}</h4>
           <h6><span class="temp-max">29°</> | <span class="temp-min">15° </span></h6>
-          <p class="card-text">Part. cloudy <img src= "http://openweathermap.org/img/wn/50d@2x.png"alt"" width"30"/> </p>
+          <p class="card-text">Part. cloudy <img src= "http://openweathermap.org/img/wn/50d@2x.png"alt"" id="forecast-icon"/> </p>
         </div>
       </div>
     </div>
   `;
+  });
 
   forecastHTML = forecastHTML + `</div>`;
 
