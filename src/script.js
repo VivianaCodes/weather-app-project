@@ -39,11 +39,10 @@ function getForecast(coordinates) {
   let apiKey = "64469ac67e6dc941feb5b50915a18dc7";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
-  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeather(response) {
-  console.log(response.data);
   let city = document.querySelector("#current-city");
   city.innerHTML = response.data.name;
   let temp = document.querySelector("#temp-number");
@@ -62,7 +61,6 @@ function displayWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  displayForecast();
   getForecast(response.data.coord);
 }
 
@@ -99,24 +97,40 @@ function convertCelsius(event) {
   tempElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = ` <div class="row future-days">`;
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` 
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` 
     <div class="col-2">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">${day}</h4>
-          <h6><span class="temp-max">29°</> | <span class="temp-min">15° </span></h6>
-          <p class="card-text">Part. cloudy <img src= "http://openweathermap.org/img/wn/50d@2x.png"alt"" id="forecast-icon"/> </p>
+          <h3 class="card-title">${formatDay(forecastDay.dt)}</h3>
+          <h4><span class="temp-max">${Math.round(
+            forecastDay.temp.max
+          )}°</> | <span class="temp-min">${Math.round(
+          forecastDay.temp.min
+        )}°</span></h4>
+          <p class="card-text">${forecastDay.weather[0].main} </p>
+          <img src= "http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"alt"" id="forecast-icon"/>
         </div>
       </div>
     </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
