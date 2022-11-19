@@ -114,7 +114,7 @@ function displayForecast(response) {
         forecastHTML +
         ` 
     <div class="col-2">
-      <div class="card">
+      <div class="card justify-content">
         <div class="card-body">
           <h3 class="card-title">${formatDay(forecastDay.dt)}</h3>
           <h4><span class="temp-max">${Math.round(
