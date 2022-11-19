@@ -42,7 +42,7 @@ body {
 }
 .card-body {
   padding: auto;
-  text-align: left;
+  text-align: center;
   justify-content: center;
 }
 .card-text {
