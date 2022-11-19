@@ -1,16 +1,12 @@
 body {
   font-family: "Rajdhani", sans-serif;
-  background-image: url(images/funny-empoji.png);
-  background-position-x: center;
-  background-repeat: repeat;
-  background-attachment: fixed;
 }
 .container {
   background-color: #d1f0ee;
   max-width: 100%;
   width: 80%;
   margin: 60px auto;
-  padding: 20px;
+  padding: 15px;
   height: 750px;
   border: 1px solid rgba(116, 211, 205, 0.5);
   border-radius: 10px;
